@@ -93,7 +93,7 @@
     margin: 20px;
     color: black;
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 /* Notif Cards */

@@ -69,7 +69,7 @@ header("location: ".$controllerKeme);
 			<h1>MY PROFILE</h1>
 			<div class="user-details">
 				<div class="user-image">
-					<img src="../../registration/img_user/<?php echo $user_data['file_name'] ?>" alt="" width="100">
+					<img src="../registration/userpics/<?php echo $user_data['file_name'] ?>" alt="" width="100">
 					<!-- <a href="#" class="adopt-button">CHANGE PICTURE</a> -->
 				</div>
 				<div class="edit">
@@ -106,7 +106,7 @@ if (isset($pet_data) || empty($pet_data)) {
     foreach ($pet_data as $key => $value) {
         echo '<div class="pet-card">';
         echo '<div class="pet-image">';
-        echo '<img width="180" src="../../img' . $value['file_name'] . '">';
+        echo '<img width="180" src="../registration/petpics/' . $value['file_name'] . '">';
         echo '</div>';
         echo '<div class="pet-content">';
         echo $value['petname'];

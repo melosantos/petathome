@@ -8,9 +8,8 @@ if ($_SESSION['fname'] != "") {
     echo "<a href='index.php?logout=1'>Logout</a>";
 }
 
-echo "WALALALALALALALA";
 
-echo "WOLOLOLOLO";
+echo "WALALALALALALALLALA";
 ?>
 
 <!DOCTYPE html>

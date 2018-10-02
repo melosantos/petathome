@@ -8,11 +8,11 @@ if($_SESSION['user_id'] == ""){
 	echo "Your are not allowed here!!!";
 
 	?>	
-	 <script> alert("Please log in first"); </script>
-	 <meta http-equiv="refresh" content="0;url=index.php"/>
+	<script> alert("Please log in first"); </script>
+	<meta http-equiv="refresh" content="0;url=index.php"/>
 
 	<?php
-		header("location: index.php");
+	header("location: index.php");
 } 
 
 $petname = $_POST['petname'];
@@ -23,8 +23,8 @@ $bday = $_POST['bday'];
 $rdate = $_POST['rdate'];
 $dsc = $_POST['dsc'];
 $document_id = $_POST['document_id'];
-$file_type = $_POST['file_type'];
-$file_size = $_POST['file_size'];
+// $file_type = $_POST['file_type'];
+// $file_size = $_POST['file_size'];
 
 //1
 $user_id = $_SESSION['user_id'];
@@ -36,67 +36,69 @@ $uploaddir = '../registration/petpics/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
 if ($_POST['btnRegister']) {
+	ChromePhp::log('USER ID:');
+	ChromePhp::log($_FILES);
 	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 		ChromePhp::log($_FILES);
-		
+		$conn = new mysqli($localhost, $username, $password, $db);
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		}
+		//persist to tbl_file(image)
+		$strInsertFile = "INSERT INTO tbl_file(file_name, file_type, file_size)
+		VALUES ('".$_FILES['userfile']['name']."', 'png', ".$_FILES['userfile']['size'].")";
+		$conn->query($strInsertFile) or die($strInsertFile);
+		$file_image_id = $conn->insert_id;
+
+		//persist to tbl_file(docs)
+		$strInsertDocsFile = "INSERT INTO tbl_file(file_type, file_size)
+		VALUES ('.png', 200)"; //doxx pdf
+		$conn->query($strInsertDocsFile) or die($conn->error);
+		$file_document_id = $conn->insert_id;
+
+
+		if(isset($file_image_id) && isset($file_document_id)) {
+			$strInsertPet = "INSERT INTO tbl_pets(petname, breed, gender, pet_type, bday, dsc, tbl_users_user_id, tbl_file_file_id)
+			VALUES ('$petname', '$breed', '$gender', '$pet_type','$bday',  '$dsc', ".$user_id.", ".$file_image_id.")";
+			$conn->query($strInsertPet) or die($strInsertPet);
+			$pet_id = $conn->insert_id;
+
+			if(isset($pet_id)) {
+				//persist to tbl_docs using $file_docs_id and $pet_id
+				$strInsertDocument = "INSERT INTO tbl_document(document_type, tbl_file_file_id, tbl_pets_pet_id)
+				VALUES ('Birth Cert', '$file_document_id', '$pet_id')"; //doxx pdf
+				$conn->query($strInsertDocsFile) or die($conn->error);
+
+				//persist to tbl_docs using $file_docs_id and $pet_id
+				$strInsertTransaction = "INSERT INTO tbl_adopt_transc(is_adopted, tbl_pets_pet_id)
+				VALUES (0, ".$pet_id.")"; 
+				$conn->query($strInsertTransaction) or die($strInsertTransaction);
+
+				echo '<div class="member">';
+				echo 'Congratulations, ' . $petname . '! You are one step closer to finding a new home.';
+				echo '<a href="../adoption-list/adoption-list.php">See Pets for adoption!</a>';
+				echo '</div>';
+				$conn->close();
+			}
+		} else {
+			ChromePhp::log("No file ID");
+			ChromePhp::log($strInsertFile);
+
+		}
 	} else {
 		ChromePhp::log("Upload failed");
 	}
-    $conn = new mysqli($localhost, $username, $password, $db);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-	//persist to tbl_file(image)
-	$strInsertFile = "INSERT INTO tbl_file(file_type, file_size)
-	VALUES ('".$_FILES['userfile']['name']."', ".$_FILES['userfile']['size'].")";
-	$conn->query($strInsertFile) or die($conn->error);
-	$file_image_id = $conn->insert_id;
-
-	//persist to tbl_file(docs)
-	$strInsertDocsFile = "INSERT INTO tbl_file(file_type, file_size)
-		VALUES ('.png', 200)"; //doxx pdf
-	$conn->query($strInsertDocsFile) or die($conn->error);
-	$file_document_id = $conn->insert_id;
 
 
-	if(isset($file_image_id) && isset($file_document_id)) {
-		$strInsertPet = "INSERT INTO tbl_pets(petname, breed, gender, pet_type, bday, dsc, tbl_users_user_id, tbl_file_file_id)
-		VALUES ('$petname', '$breed', '$gender', '$pet_type','$bday',  '$dsc', ".$user_id.", ".$file_image_id.")";
-		$conn->query($strInsertPet) or die($strInsertPet);
-		$pet_id = $conn->insert_id;
-
-		if(isset($pet_id)) {
-				//persist to tbl_docs using $file_docs_id and $pet_id
-			$strInsertDocument = "INSERT INTO tbl_document(document_type, tbl_file_file_id, tbl_pets_pet_id)
-			VALUES ('Birth Cert', '$file_document_id', '$pet_id')"; //doxx pdf
-			$conn->query($strInsertDocsFile) or die($conn->error);
-
-			//persist to tbl_docs using $file_docs_id and $pet_id
-			$strInsertTransaction = "INSERT INTO tbl_adopt_transc(is_adopted, tbl_pets_pet_id)
-				VALUES (0, ".$pet_id.")"; 
-			$conn->query($strInsertTransaction) or die($strInsertTransaction);
-
-			echo '<div class="member">';
-			echo 'Congratulations, ' . $petname . '! You are one step closer to finding a new home.';
-			echo '<a href="../adoption-list/adoption-list.php">See Pets for adoption!</a>';
-			echo '</div>';
-			$conn->close();
-		}
-	} else {
-		ChromePhp::log("No file ID");
-		ChromePhp::log($strInsertFile);
-
-	}
-	
 
 }
 
 function test_input($data)
 {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
 }
 
 ?>
@@ -114,7 +116,7 @@ function test_input($data)
 <body>
 	<div class="topnav">
 		<a href='../adoption-list/adoption-list.controller.php?id=<?php echo $user_id ?>'>Adoption List</a>
-        <a href="../user-profile/uprofile.controller.php?id=<?php echo $user_id?>">My Profile</a>
+		<a href="../user-profile/uprofile.controller.php?id=<?php echo $user_id?>">My Profile</a>
 	</div>
 	<div class="signup-bg">
 		<img src="../../img/petreg.png" class="petreg">
@@ -157,19 +159,19 @@ function test_input($data)
 
 			<label for="bday" class="signup-style"><b>Birthday</b></label>
 			<input type="date" placeholder="Birthday" name="bday"  class="signup-style" required value="<?php echo $_POST['bday']; ?>">
-					<br>
+			<br>
 
 <!----
 	
 	--->	
-			
-			<input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-			Choose image: <input name="userfile" type="file" />
-			<input type="Submit" name="btnRegister" value="Register" class="btn">
-				<br>	<br>
 
-		</FORM>
-	</div>
+	<input type="hidden" name="MAX_FILE_SIZE" value="512000" />
+	Choose image: <input name="userfile" type="file" />
+	<input type="Submit" name="btnRegister" value="Register" class="btn">
+	<br>	<br>
+
+</FORM>
+</div>
 
 
 
