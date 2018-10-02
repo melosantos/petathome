@@ -61,7 +61,7 @@ header("location: ".$controllerKeme);
 		<a href='../registration/petreg.php'>Donate Pets</b></a>
 		<a href='../adoption-list/adoption-list.controller.php?id=<?php echo $user_id ?>'>Adoption List</a>
 		<a href='../admin/administrator.php?id=<?php echo $user_id ?>'>Admin Panel</a>
-		<a href='../index.php'>Log Out</b></a>
+		<a href='../index.php?logout=1'>Log Out</b></a>
 
 	</div>
 
@@ -70,7 +70,7 @@ header("location: ".$controllerKeme);
 			<h1>MY PROFILE</h1>
 			<div class="user-details">
 				<div class="user-image">
-					<img src="../../registration/img_user/<?php echo $user_data['file_name'] ?>" alt="" width="100">
+					<img src="../registration/userpics/<?php echo $user_data['file_name'] ?>" alt="" width="100">
 					<!-- <a href="#" class="adopt-button">CHANGE PICTURE</a> -->
 				</div>
 				<div class="edit">
@@ -107,7 +107,7 @@ if (isset($pet_data) || empty($pet_data)) {
     foreach ($pet_data as $key => $value) {
         echo '<div class="pet-card">';
         echo '<div class="pet-image">';
-        echo '<img width="180" src="../../img' . $value['file_name'] . '">';
+        echo '<img width="180" src="../registration/petpics/' . $value['file_name'] . '">';
         echo '</div>';
         echo '<div class="pet-content">';
         echo $value['petname'];
