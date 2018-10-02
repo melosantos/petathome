@@ -9,6 +9,8 @@ if ($_SESSION['fname'] != "") {
 }
 
 echo "WALALALALALALALA";
+
+echo "WOLOLOLOLO";
 ?>
 
 <!DOCTYPE html>
