@@ -1,0 +1,11 @@
+.bg-img {
+	background:url('../../img/c4.png');
+	min-height: 300px;
+	margin-top: 100px;
+	width: 300px;
+	background-position: left;
+	left: 300px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: absolute;
+}

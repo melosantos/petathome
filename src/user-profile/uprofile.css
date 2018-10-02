@@ -1,0 +1,240 @@
+.container {
+	padding: 5% 10% 0 10%;
+	display: flex;
+	flex-direction: row;
+	min-height: 100%;
+	border-radius: 10px;
+	/* background-color: black; */
+}
+
+.profile-section {
+	display: flex;
+	width: 70%;
+	min-height: 100%;
+	/* background-color: green; */
+	flex-direction: column;
+	
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+/* User Card */
+
+.user-details {
+    max-height: 35%;
+	height: 70%;
+	background-color: white;
+	margin: 20px;
+	border-radius: 5px;
+    box-shadow: 3px 6px 6px 3px rgba(0, 0, 0, 0.16), 3px 6px 6px 3px rgba(0, 0, 0, 0.23);
+    display: flex;
+    flex-direction: row;
+}
+
+.user-image {
+    margin-top: 5%;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+
+}
+
+.user-image img {
+    margin: 0 auto;
+}
+
+.user-info {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 5% 0;
+    max-height: 50px;
+}
+
+.user-name {
+    font-size: 2em;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    height: 10%;
+    text-align: left;
+    margin-bottom: 10%;
+}
+
+.user-sub-details {
+    font-size: 1em;
+    font-family: 'Josefin Sans', sans-serif;
+    color: black;
+    width: 100%;
+    height: 10%;
+    text-align: left;
+    margin-bottom: 3%;
+}
+
+.user-pets {
+	height: 30%;
+	margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.notification-section {
+	display: flex;
+	width: 30%;
+	min-height: 20%;
+	border-radius: 5px;
+    margin: 20px;
+    color: black;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+/* Notif Cards */
+
+.notif-card {
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    border-radius: 5    px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.notif-image {
+    width: 30%;
+    height: 100%;
+}
+
+.notif-image img {
+    margin: 0 auto;
+}
+
+.notif-info {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.notif-name {
+    font-size: 1.5em;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    height: 30%;
+    text-align: left;
+    padding: 10px 5px;
+}
+
+/* Pets Cards */
+
+.pet-card {
+    max-width: 200px;
+    width: 100%;
+    height: 250px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    margin: 10px;
+}
+
+.pet-image {
+    width: 100%;
+    height: 200px;
+    /* background-color: red; */
+}
+
+.pet-content {
+    width: 100%;
+    height: 50px;
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.adopt-button {
+    background-color: #d5a476;
+    color: white;
+    width: auto;
+    padding: 2% 5%;
+    border-radius: 10px;
+    margin: 5% 5%;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+h1 {
+    text-align: left;
+    color: #996633;
+    font-family: "Luckiest Guy", cursive;
+}
+
+.button {
+    margin-top: 70%;
+    background-color: white;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    font-family: 'Mali', cursive;
+}
+
+.button1 {
+    background-color: #996633;
+    color: #f1f1f1;
+    border: 2px solid #996633;
+}
+
+.button1:hover {
+    background-color: white;
+    color: #996633;
+}
+
+.edit {
+    margin-top: 1%;
+    right: 39%;
+    position: absolute;
+    border-radius: 8%;
+}
+.ibang-kulay {
+  color: black;
+}
+
+.form {
+    font-size: 10px;
+    font-family: 'Mali', cursive;
+    color: #996633;
+}
+
+.input {
+    width: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+.pencil {
+    left: 40%;
+    width: 140px;
+    position: relative;
+}
+.label {
+    font-family: 'Inconsolata', monospace;
+    color: #996633;
+
+}

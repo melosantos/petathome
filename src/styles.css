@@ -1,0 +1,317 @@
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+  font-family: "Karla", sans-serif;
+  color: #e1be9d;
+  height: 55px;
+  display: block;
+  overflow: hidden;
+  padding: 18px 100px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+#right {
+  position: absolute;
+  top: 17px;
+  right: 10px;
+}
+
+#brand {
+	font-weight: bold;
+}
+/* Style the links inside the navigation bar */
+.topnav a {
+  transition: 0.3s ease;
+  background: #ffffff;
+  color: #d5a476;
+  font-size: 20px;
+  text-decoration: none;
+  border-top: 4px solid #ffffff;
+  border-bottom: 4px solid #ffffff;
+  padding: 20px 0;
+  margin: 0 20px;
+  font-family: "Karla", sans-serif;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  /* background-color: #dbb18a;
+	color: black;
+	border-radius: 12px; */
+  border-top: 4px solid #d5a476;
+  border-bottom: 4px solid #d5a476;
+  padding: 6px 0;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type="text"] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+.midnav {
+  color: #e1be9d;
+  height: 55px;
+  font-size: 2em;
+  display: block;
+  overflow: hidden;
+  padding: 0px;
+  font-family: "Pacifico", cursive;
+  position: absolute;
+}
+
+.container {
+  /*position: relative;*/
+  text-align: center;
+  color: white;
+  background-image: url(img/c1.jpg);
+  min-height: 500px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.top-left {
+  position: absolute;
+  top: 0px;
+  left: 50px;
+  color: #ffffff;
+  font-family: "Patua One", cursive;
+  font-size: 3em;
+}
+
+.no-margin {
+  margin: 0px 0px;
+}
+
+.about-container {
+  position: relative;
+  min-height: 600px;
+}
+
+.about-ming {
+  position: absolute;
+  top: 100px;
+  left: 80px;
+}
+
+.about-adopt {
+  position: absolute;
+  right: 10%;
+  width: 620px;
+  top: 100px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2em;
+  color: #c68c53;
+}
+
+.lastmain-container {
+  position: relative;
+  min-height: 45px;
+  width: 100%;
+  background-color: #d5a476;
+  margin-bottom: 0px;
+
+}
+
+.ibang-kulay {
+  color: #6E2C00;
+}
+
+.lastmain {
+  /*	position: absolute;*/
+  font-family: "Cookie", cursive;
+  font-size: 2em;
+  color: #704e29;
+  text-align: center;
+  margin: 0 auto;
+  top: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add styles to the form container */
+.login-container {
+  text-align: left;
+  left: 400px;
+  width: 350px;
+  color: #996633;
+  font-family: "Crete Round", serif;
+  font-size: 10px;
+  min-height: 500px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+/* Full-width input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #d5a476;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-family: "Concert One", cursive;
+}
+
+.btn:hover {
+  opacity: 3;
+}
+
+
+.form-title {
+  margin-top: 5%;
+  color: #996633;
+  font-family: "Luckiest Guy", cursive;
+  font-size: 2em;
+  margin-left: 5%;
+}
+
+.congrats-bg {
+  position: relative;
+  min-height: 500px;
+}
+
+.congrats-ming {
+  position: absolute;
+  width: 30%;
+  top: 0%;
+  left: 5%;
+}
+
+.pw-notmatch {
+  font-family: "Gamja Flower", cursive;
+  position: absolute;
+  width: 620px;
+  top: 100px;
+  font-weight: bolder;
+  margin-left: 20%;
+  margin-top: 2%;
+  color: #b30000;
+  font-size: 2em;
+  margin-left: 5%;
+}
+
+.member {
+  font-family: "Poor Story", cursive;
+  color: #c68c53;
+  position: absolute;
+  width: 620px;
+  top: 100px;
+  font-weight: bold;
+  margin-left: 20%;
+  margin-top: 2%;
+  right: 5%;
+  font-size: 2em;
+  z-index: 1;
+}
+
+.logo {
+  position: absolute;
+  top: 1%;
+  height: 45px;
+  left: 35px;
+  margin: 0px;
+}
+
+.pic-border {
+  border-radius: 50%;
+  position: relative;
+  min-height: 100px;
+  width: 300px;
+  margin-top: 100px;
+}
+
+.adopt-pic {
+  width: 300px;
+  min-height: 300px;
+  position: fixed;
+  margin: 0px;
+  margin-top: 10%;
+  left: 10%;
+}
+
+.donate-pic {
+  width: 260px;
+  min-height: 270px;
+  position: fixed;
+  margin: 0px;
+  margin-top: 12%;
+  left: 60%;
+}
+
+.footer {
+  position: absolute;
+  min-height: 45px;
+  width: 100%;
+  margin-top: 45%;
+  background-color: #d5a476;
+  margin-bottom: 0px;
+}
+
+
+
+.signup-bg {
+
+	position: relative;
+	width: 100%;
+
+}
+
+.sign-up-ming {
+	position: relative;
+	width: 100%;
+
+}

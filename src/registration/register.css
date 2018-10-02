@@ -1,0 +1,92 @@
+
+.signup-container {
+	text-align: left;
+	left: 5%;
+	width: 25%;
+	color: #996633;
+	font-family: 'Luckiest Guy', cursive;
+	font-size: 2em;
+	min-height: 400px;
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+    position: absolute;
+    margin-bottom: 50px;
+
+}
+
+.signup-bg {
+	/*width: 300px;*/
+	/*position: relative;*/
+	height: auto;
+	margin-top: 5%;
+}
+
+.sign-up-ming {
+	position: fixed;
+	width: 35%;
+	top: 70%;
+	right: 5%;
+}
+
+.signup-style {
+	font-family: 'Concert One', cursive;
+	font-size: 50%;
+}
+
+/* USER REGISTER PAGE */
+.signup-table {
+	font-family: arial;
+	width: 250%;
+
+}
+
+.signup-table th {
+	width: 10%;
+}
+
+.signup-table td {
+	width: 52%;
+	table-layout: fixed;
+}
+
+.signup-validation {
+	padding: 0px 10px 15px 5px;
+	font-family: consolas;
+	font-weight: bold;
+}
+
+.signup-error {
+	color: #DC143C;
+	font-size:15px;
+}
+
+.signup-check {
+	color: #77DD77;
+	font-size:20px;
+
+}
+
+.footer {
+  font-family: "Karla", sans-serif;
+  color: black;
+  background-color: #e1be9d;
+  height: 120px;
+  display: block;
+  overflow: hidden;
+  padding: 40px 100px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  
+  text-align: center;
+  -webkit-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+              -moz-box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+                         box-shadow: 0px 0px 10px rgba(0,0,0,.8);
+}
+
+
+
+/*------ USER REGISTER PAGE------*
