@@ -27,7 +27,7 @@ if ($_POST['login']) {
 
 					/*	header("Location: ../adoption-list/adoption-list.controller.php?id=".$user_id);*/
 						
-						  ?> <meta http-equiv="refresh" content=".01;url=../user-profile/uprofile.php"> <?php
+						  ?> <meta http-equiv="refresh" content=".01;url=../user-profile/uprofile.controller.php?id=42"> <?php
 						exit;
 					}
 					
