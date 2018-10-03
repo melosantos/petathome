@@ -7,15 +7,12 @@ if ($_SESSION['fname'] != "") {
     echo "Welcome, " . $_SESSION['fname'] . " " . $_SESSION['lname'];
     echo "<a href='index.php?logout=1'>Logout</a>";
 }
-
-
-echo "WALALALALALALALLALA";
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Meow Site</title>
+	<title>Pet At Home</title>
 
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	<link rel="stylesheet" type="text/css" href="slideshow.css">
@@ -50,21 +47,14 @@ echo "WALALALALALALALLALA";
 		<div class="mySlides fade">
 			<div class="numbertext">1 / 3</div>
 			<div class="ming">
-				<img src="../img/img3.png">
+				<img src="../img/cover1.png">
 			</div>
 		</div>
 
 		<div class="mySlides fade">
 			<div class="numbertext">2 / 3</div>	
 			<div class="ming">
-				<img src="../img/c1.jpg" class="ming2-img">
-			</div>
-		</div>
-
-		<div class="mySlides fade">
-			<div class="numbertext">3 / 3</div>
-			<div class="ming">
-				<img src="../img/img2.jpg">
+				<img src="../img/cover2.png" class="ming2-img">
 			</div>
 		</div>
 
@@ -78,7 +68,6 @@ echo "WALALALALALALALLALA";
 	<div style="text-align:center">
 		<span class="dot" onclick="currentSlide(1)"></span>
 		<span class="dot" onclick="currentSlide(2)"></span>
-		<span class="dot" onclick="currentSlide(3)"></span>
 	</div>
 	<br>
 	<script type="text/javascript" src="slideshow.js"></script>

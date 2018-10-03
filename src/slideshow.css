@@ -6,7 +6,7 @@
   position: relative;
   width: 100%;
   min-height: 500px;
-  margin-top: 4%;
+  margin-top: 3%;
 }
 
 /* Hide the images by default */
@@ -37,7 +37,7 @@
 
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+  background-color: #d5a476;
 }
 
 /* Caption text */
@@ -68,11 +68,11 @@
 
 .ming img {
   width: 100%;
-    margin: -75px 0 0 0px;
+    margin: -350px 0 0 0px;
 }
 
 .ming2-img {
-    margin: -125px 0 0 0px !important;
+    margin: -35px 0 0 0px !important;
 
 }
 
@@ -89,7 +89,7 @@
 }
 
 .active, .dot:hover {
-  background-color: #717171;
+  background-color: #d5a476;
 }
 
 /* Fading animation */
