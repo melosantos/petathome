@@ -3,9 +3,9 @@
 	error_reporting(E_ALL & ~E_NOTICE);
 	
 	$host = "localhost";
-	$username = "root";
-	$password = "";
-	$db = "id7163051_petathomedb";
+	$username = "groot";
+	$password = "Admin1996";
+	$db = "petathomedb";
 
 	if($_GET['logout'] == 1){
 		$_SESSION['fname']="";
