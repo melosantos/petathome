@@ -22,7 +22,9 @@ function getAllPets($pet_type, $breed, $user_id) {
                      u.mname,
                      u.lname,
                      u.email,
-                     f.file_name
+                     f.file_name,
+                     f.file_id,
+                     f.file_type
                      FROM tbl_adopt_transc t
                      INNER JOIN tbl_pets p
                      ON t.tbl_pets_pet_id = p.pet_id

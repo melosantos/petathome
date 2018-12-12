@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 19, 2018 at 08:51 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1:3306
+-- Generation Time: Oct 02, 2018 at 11:24 AM
+-- Server version: 5.7.21
+-- PHP Version: 5.6.35
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,74 +19,66 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `petathomedb`
+-- Database: `id7163051_petathomedb`
 --
 CREATE DATABASE IF NOT EXISTS `petathomedb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `petathomedb`;
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_address`
 --
--- Creation: Sep 19, 2018 at 04:39 PM
---
 
+DROP TABLE IF EXISTS `tbl_address`;
 CREATE TABLE IF NOT EXISTS `tbl_address` (
   `address_id` int(4) NOT NULL AUTO_INCREMENT,
-  `house_no` varchar(100) NOT NULL,
-  `streetname` varchar(100) NOT NULL,
-  `subd` varchar(100) NOT NULL,
-  `brgy` varchar(100) NOT NULL,
-  `city` varchar(100) NOT NULL,
-  `province` varchar(100) NOT NULL,
-  `zipcode` varchar(4) NOT NULL,
+  `house_no` varchar(100) DEFAULT NULL,
+  `streetname` varchar(100) DEFAULT NULL,
+  `subd` varchar(100) DEFAULT NULL,
+  `brgy` varchar(100) DEFAULT NULL,
+  `city` varchar(100) DEFAULT NULL,
+  `province` varchar(100) DEFAULT NULL,
+  `zipcode` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`address_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
-
---
--- RELATIONSHIPS FOR TABLE `tbl_address`:
---
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_address`
 --
 
+INSERT INTO `tbl_address` (`address_id`, `house_no`, `streetname`, `subd`, `brgy`, `city`, `province`, `zipcode`) VALUES
+(44, NULL, NULL, NULL, NULL, 'Caloocan', NULL, NULL),
+(45, NULL, NULL, NULL, NULL, 'Las PiÃ±as', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_adopt_transc`
 --
--- Creation: Sep 19, 2018 at 04:41 PM
---
 
+DROP TABLE IF EXISTS `tbl_adopt_transc`;
 CREATE TABLE IF NOT EXISTS `tbl_adopt_transc` (
   `transc_id` int(100) NOT NULL AUTO_INCREMENT,
-  `is_adopted` tinyint(1) NOT NULL,
-  `tbl_users_user_id` int(5) NOT NULL,
+  `is_adopted` tinyint(1) NOT NULL DEFAULT '0',
   `tbl_pets_pet_id` int(100) NOT NULL,
   PRIMARY KEY (`transc_id`),
-  KEY `fk_tbl_adopt_transc_tbl_users1_idx` (`tbl_users_user_id`),
   KEY `fk_tbl_adopt_transc_tbl_pets1_idx` (`tbl_pets_pet_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `tbl_adopt_transc`:
---   `tbl_pets_pet_id`
---       `tbl_pets` -> `pet_id`
---   `tbl_users_user_id`
---       `tbl_users` -> `user_id`
+-- Dumping data for table `tbl_adopt_transc`
 --
+
+INSERT INTO `tbl_adopt_transc` (`transc_id`, `is_adopted`, `tbl_pets_pet_id`) VALUES
+(24, 0, 24);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_document`
 --
--- Creation: Sep 19, 2018 at 04:41 PM
---
 
+DROP TABLE IF EXISTS `tbl_document`;
 CREATE TABLE IF NOT EXISTS `tbl_document` (
   `document_id` int(100) NOT NULL AUTO_INCREMENT,
   `document_type` varchar(45) NOT NULL,
@@ -97,106 +89,96 @@ CREATE TABLE IF NOT EXISTS `tbl_document` (
   KEY `fk_tbl_document_tbl_pets1_idx` (`tbl_pets_pet_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- RELATIONSHIPS FOR TABLE `tbl_document`:
---   `tbl_file_file_id`
---       `tbl_file` -> `file_id`
---   `tbl_pets_pet_id`
---       `tbl_pets` -> `pet_id`
---
-
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_file`
 --
--- Creation: Sep 19, 2018 at 04:39 PM
---
 
+DROP TABLE IF EXISTS `tbl_file`;
 CREATE TABLE IF NOT EXISTS `tbl_file` (
   `file_id` int(100) NOT NULL AUTO_INCREMENT,
-  `file_type` varchar(100) NOT NULL,
-  `file_size` int(100) NOT NULL,
+  `file_name` varchar(100) DEFAULT NULL,
+  `file_type` varchar(100) DEFAULT NULL,
+  `file_size` int(100) DEFAULT NULL,
   PRIMARY KEY (`file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- RELATIONSHIPS FOR TABLE `tbl_file`:
---
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_file`
 --
 
-
+INSERT INTO `tbl_file` (`file_id`, `file_name`, `file_type`, `file_size`) VALUES
+(130, 'me', 'png', 338168),
+(131, NULL, 'unicorn1.jpg', 23509),
+(132, NULL, '.png', 200),
+(133, NULL, '.png', 200),
+(134, 'pizza 1', 'png', 67248);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_notif`
 --
--- Creation: Sep 19, 2018 at 04:41 PM
---
 
+DROP TABLE IF EXISTS `tbl_notif`;
 CREATE TABLE IF NOT EXISTS `tbl_notif` (
   `notif_id` int(100) NOT NULL AUTO_INCREMENT,
   `is_accepted` tinyint(1) NOT NULL,
   `is_reviewed` tinyint(1) NOT NULL,
   `rejection_reason` varchar(500) NOT NULL,
   `accepted_reason` varchar(500) NOT NULL,
+  `interest_reason` varchar(200) NOT NULL,
+  `tbl_user_owner_user_id` int(4) NOT NULL,
+  `tbl_user_interest_user_id` int(4) NOT NULL,
   `tbl_adopt_transc_transc_id` int(100) NOT NULL,
   PRIMARY KEY (`notif_id`),
-  KEY `fk_tbl_notif_tbl_adopt_transc1_idx` (`tbl_adopt_transc_transc_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- RELATIONSHIPS FOR TABLE `tbl_notif`:
---   `tbl_adopt_transc_transc_id`
---       `tbl_adopt_transc` -> `transc_id`
---
+  KEY `fk_tbl_notif_tbl_adopt_transc1_idx` (`tbl_adopt_transc_transc_id`),
+  KEY `fk_tbl_notif_tbl_user1` (`tbl_user_owner_user_id`),
+  KEY `fk_tbl_notif_tbl_user2` (`tbl_user_interest_user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_pets`
 --
--- Creation: Sep 19, 2018 at 04:41 PM
---
 
+DROP TABLE IF EXISTS `tbl_pets`;
 CREATE TABLE IF NOT EXISTS `tbl_pets` (
   `pet_id` int(100) NOT NULL AUTO_INCREMENT,
-  `petname` varchar(100) NOT NULL,
-  `breed` varchar(100) NOT NULL,
-  `bday` date NOT NULL,
-  `document_id` varchar(100) NOT NULL,
-  `donated_by` varchar(100) NOT NULL,
-  `dsc` varchar(500) NOT NULL,
-  `tbl_users_user_id` int(5) NOT NULL,
-  `tbl_file_file_id` int(100) NOT NULL,
+  `petname` varchar(100) DEFAULT NULL,
+  `breed` varchar(100) DEFAULT NULL,
+  `gender` varchar(100) DEFAULT NULL,
+  `pet_type` varchar(100) DEFAULT NULL,
+  `bday` date DEFAULT NULL,
+  `rdate` date DEFAULT NULL,
+  `dsc` varchar(500) DEFAULT NULL,
+  `tbl_users_user_id` int(5) DEFAULT NULL,
+  `tbl_file_file_id` int(100) DEFAULT NULL,
   PRIMARY KEY (`pet_id`),
   KEY `fk_tbl_pets_tbl_users1_idx` (`tbl_users_user_id`),
   KEY `fk_tbl_pets_tbl_file1_idx` (`tbl_file_file_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- RELATIONSHIPS FOR TABLE `tbl_pets`:
---   `tbl_file_file_id`
---       `tbl_file` -> `file_id`
---   `tbl_users_user_id`
---       `tbl_users` -> `user_id`
+-- Dumping data for table `tbl_pets`
 --
+
+INSERT INTO `tbl_pets` (`pet_id`, `petname`, `breed`, `gender`, `pet_type`, `bday`, `rdate`, `dsc`, `tbl_users_user_id`, `tbl_file_file_id`) VALUES
+(24, 'Huy', 'help', 'F', 'Dog', '2018-12-31', NULL, 'please', 41, 131);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `tbl_users`
 --
--- Creation: Sep 19, 2018 at 05:06 PM
---
 
+DROP TABLE IF EXISTS `tbl_users`;
 CREATE TABLE IF NOT EXISTS `tbl_users` (
+  `status` varchar(255) NOT NULL DEFAULT 'not active',
   `user_id` int(5) NOT NULL AUTO_INCREMENT,
-  `user_type` int(1) NOT NULL,
+  `user_type` int(1) NOT NULL DEFAULT '0',
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -204,65 +186,23 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `mname` varchar(100) NOT NULL,
   `lname` varchar(100) NOT NULL,
   `bday` date NOT NULL,
-  `contact_no` int(11) NOT NULL,
+  `contact_no` varchar(11) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `tbl_address_address_id` int(4) NOT NULL,
   `tbl_file_file_id` int(100) NOT NULL,
+  `activationcode` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`),
   KEY `fk_tbl_users_tbl_address_idx` (`tbl_address_address_id`),
   KEY `fk_tbl_users_tbl_file1_idx` (`tbl_file_file_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- RELATIONSHIPS FOR TABLE `tbl_users`:
---   `tbl_address_address_id`
---       `tbl_address` -> `address_id`
---   `tbl_file_file_id`
---       `tbl_file` -> `file_id`
---
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `tbl_adopt_transc`
---
-ALTER TABLE `tbl_adopt_transc`
-  ADD CONSTRAINT `fk_tbl_adopt_transc_tbl_pets1` FOREIGN KEY (`tbl_pets_pet_id`) REFERENCES `tbl_pets` (`pet_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_adopt_transc_tbl_users1` FOREIGN KEY (`tbl_users_user_id`) REFERENCES `tbl_users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_document`
---
-ALTER TABLE `tbl_document`
-  ADD CONSTRAINT `fk_tbl_document_tbl_file1` FOREIGN KEY (`tbl_file_file_id`) REFERENCES `tbl_file` (`file_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_docutbl_usersment_tbl_pets1` FOREIGN KEY (`tbl_pets_pet_id`) REFERENCES `tbl_pets` (`pet_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_notif`
---
-ALTER TABLE `tbl_notif`
-  ADD CONSTRAINT `fk_tbl_notif_tbl_adopt_transc1` FOREIGN KEY (`tbl_adopt_transc_transc_id`) REFERENCES `tbl_adopt_transc` (`transc_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_pets`
---
-ALTER TABLE `tbl_pets`
-  ADD CONSTRAINT `fk_tbl_pets_tbl_file1` FOREIGN KEY (`tbl_file_file_id`) REFERENCES `tbl_file` (`file_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_pets_tbl_users1` FOREIGN KEY (`tbl_users_user_id`) REFERENCES `tbl_users` (`user_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `tbl_users`
---
-ALTER TABLE `tbl_users`
-  ADD CONSTRAINT `fk_tbl_users_tbl_address` FOREIGN KEY (`tbl_address_address_id`) REFERENCES `tbl_address` (`address_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_tbl_users_tbl_file1` FOREIGN KEY (`tbl_file_file_id`) REFERENCES `tbl_file` (`file_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+INSERT INTO `tbl_users` (`status`, `user_id`, `user_type`, `username`, `password`, `email`, `fname`, `mname`, `lname`, `bday`, `contact_no`, `timestamp`, `tbl_address_address_id`, `tbl_file_file_id`, `activationcode`) VALUES
+('active', 41, 1, 'melosantos', 'Test123', 'msdas@test.com', 'Melo', '', 'Santos', '2018-12-31', '09123456798', '2018-10-02 10:32:16', 44, 130, '5d15bef1e46a2066eb76ad603a95e0bb'),
+('active', 42, 0, 'chorva', 'Test123', 'sdas@test.com', 'Test', '', 'Test', '2018-12-31', '09123456789', '2018-10-02 10:40:13', 45, 134, '55678f208b633eab445d050dafa23933');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

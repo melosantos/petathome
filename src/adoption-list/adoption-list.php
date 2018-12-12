@@ -40,7 +40,7 @@ ChromePhp::log($user_id);
         foreach ($pet_list as $key => $value) {
             echo       '<div class="card">';
             echo           '<div class="card-image">'; 
-            echo               '<img width="300" src="../../img/'.$value['file_name'].'">';
+            echo               '<img width="300" src="../registration/petpics/'.$value['file_name'].'.'.$value['file_type'].'">';
             echo           '</div>';
             echo           '<div class="card-content">';
             echo               $value['petname'],' <br> '.$value['breed'];

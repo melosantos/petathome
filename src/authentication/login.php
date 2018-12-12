@@ -22,12 +22,13 @@ if ($_POST['login']) {
 						$user_id = $row['user_id'];
 						$_SESSION['user_id']   = $row['user_id'];
 						$_SESSION['user_type'] = $row['user_type'];
+
 						$_SESSION['fname']     = $row['fname'];
 						$_SESSION['lname']     = $row['lname'];
 
 					/*	header("Location: ../adoption-list/adoption-list.controller.php?id=".$user_id);*/
 						
-						  ?> <meta http-equiv="refresh" content=".01;url=../user-profile/uprofile.controller.php?id=42"> <?php
+						  ?> <meta http-equiv="refresh" content=".01;url=../user-profile/uprofile.controller.php?id=<?php echo $user_id;?>"> <?php
 						exit;
 					}
 					

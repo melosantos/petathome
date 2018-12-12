@@ -4,7 +4,7 @@
 	
 	$host = "localhost";
 	$username = "groot";
-	$password = "Admin1996";
+	$password = "Admin1996!";
 	$db = "petathomedb";
 
 	if($_GET['logout'] == 1){

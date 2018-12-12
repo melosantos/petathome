@@ -69,7 +69,7 @@ header("location: ".$controllerKeme);
 			<h1>MY PROFILE</h1>
 			<div class="user-details">
 				<div class="user-image">
-					<img src="../registration/userpics/<?php echo $user_data['file_name'] ?>" alt="" width="100">
+					<img src="../registration/userpics/<?php echo $user_data['file_name'].'.'.$user_data['file_type']; ?>" alt="" width="100">
 					<!-- <a href="#" class="adopt-button">CHANGE PICTURE</a> -->
 				</div>
 				<div class="edit">
