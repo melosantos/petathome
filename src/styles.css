@@ -26,7 +26,10 @@ html {
 }
 
 .petreg {
-  width: 20%;
+  width: 30%;
+  position: absolute;
+  right: 130px;
+  top: 170px;
 }
 
 #brand {
